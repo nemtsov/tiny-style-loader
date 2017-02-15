@@ -3,7 +3,7 @@
 var sinon = require('sinon')
 var unit = require('../')
 
-describe('tiny-script-loader', function () {
+describe('tiny-style-loader', function () {
   var doc, el, insertBefore
 
   beforeEach(function () {
@@ -12,8 +12,9 @@ describe('tiny-script-loader', function () {
       getElementsByTagName: sinon.stub()
     }
 
-    el = {}
-    doc.createElement.returns(el)
+    el = { nodeName: 'LINK' }
+
+    doc.createElement.withArgs('link').returns(el)
 
     insertBefore = sinon.spy()
     doc.getElementsByTagName.returns([{
@@ -25,35 +26,45 @@ describe('tiny-script-loader', function () {
     delete global.document
   })
 
-  describe('loadScript', function () {
+  describe('loadStyle', function () {
     it('should call back if load successful', function (done) {
-      unit.loadScript('u', done)
+      unit.loadStyle('unit.css', done)
       el.onload()
     })
 
     it('should errback if load errored', function (done) {
-      unit.loadScript('_u_', function (err) {
-        err.message.should.match(/_u_/)
+      unit.loadStyle('unit.css', function (err) {
+        err.message.should.match(/unit\.css/)
         done()
       })
       el.onerror()
     })
+
+    it('should create the correct element', function (done) {
+      unit.loadStyle('unit.css', function () {
+        el.nodeName.should.equal('LINK')
+        el.href.should.equal('unit.css')
+        el.rel.should.equal('stylesheet')
+        done()
+      })
+      el.onload()
+    })
   })
 
-  describe('loadScriptPromised', function () {
+  describe('loadStylePromised', function () {
     it('should call back if load successful', function () {
-      var promise = unit.loadScriptPromised('u')
+      var promise = unit.loadStylePromised('unit.css')
       el.onload()
       return promise
     })
 
     it('should errback if load errored', function () {
-      var promise = unit.loadScriptPromised('_u_')
+      var promise = unit.loadStylePromised('unit.css')
         .then(function () {
           throw new Error('should have thrown')
         })
         .catch(function (err) {
-          err.message.should.match(/_u_/)
+          err.message.should.match(/unit\.css/)
         })
       el.onerror()
       return promise

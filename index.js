@@ -1,2 +1,2 @@
-exports.loadScript = require('./loadScript')
-exports.loadScriptPromised = require('./loadScriptPromised')
+exports.loadStyle = require('./loadStyle')
+exports.loadStylePromised = require('./loadStylePromised')

@@ -1,15 +1,15 @@
-# Tiny Script Loader [![Build Status](https://img.shields.io/travis/behance/tiny-script-loader.svg)](http://travis-ci.org/behance/tiny-script-loader) [![NPM version](https://img.shields.io/npm/v/tiny-script-loader.svg)](https://www.npmjs.com/package/tiny-script-loader) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+# Tiny Style Loader [![Build Status](https://img.shields.io/travis/behance/tiny-style-loader.svg)](http://travis-ci.org/behance/tiny-style-loader) [![NPM version](https://img.shields.io/npm/v/tiny-style-loader.svg)](https://www.npmjs.com/package/tiny-style-loader) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-The purpose of this library is to be the smallest callback & Promise -based script loader.
+The purpose of this library is to be the smallest callback & Promise -based style loader.
 
 ## Usage
 
 **Callback**
 
 ```js
-var loadScript = require('tiny-script-loader/loadScript')
+var loadStyle = require('tiny-style-loader/loadStyle')
 
-loadScript('https://example.com/script.js', function () {
+loadStyle('https://example.com/style.css', function () {
   console.log('loaded')
 })
 ```
@@ -17,9 +17,9 @@ loadScript('https://example.com/script.js', function () {
 **Promise**
 
 ```js
-var loadScript = require('tiny-script-loader/loadScriptPromised')
+var loadStyle = require('tiny-style-loader/loadStylePromised')
 
-loadScript('https://example.com/script.js')
+loadStyle('https://example.com/style.css')
 .then(function () {
   console.log('loaded')
 })

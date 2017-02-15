@@ -1,7 +1,7 @@
 {
-  "name": "tiny-script-loader",
-  "version": "2.0.0",
-  "description": "Tiny script loader",
+  "name": "tiny-style-loader",
+  "version": "1.0.0",
+  "description": "Tiny Style loader",
   "scripts": {
     "test": "sh -c 'npm run lint && npm run test-cover && istanbul check-coverage --statements 100 --functions 100 --branches 100 --lines 100'",
     "lint": "standard '**/*.js'",
@@ -9,14 +9,14 @@
     "test-watch": "mocha -r should --recursive -w -R min -t 20"
   },
   "keywords": [
-    "script",
+    "style",
     "loader"
   ],
-  "author": "nemtsov@gmail.com",
+  "author": "mike.sherov@gmail.com",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/behance/tiny-script-loader.git"
+    "url": "git://github.com/behance/tiny-style-loader.git"
   },
   "devDependencies": {
     "istanbul": "^0.4.4",
