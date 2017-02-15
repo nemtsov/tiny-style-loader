@@ -2,6 +2,8 @@
 
 The purpose of this library is to be the smallest callback & Promise -based style loader.
 
+If you're looking for a script loader, check out [Tiny Script Loader](https://www.npmjs.com/package/tiny-script-loader)
+
 ## Usage
 
 **Callback**
