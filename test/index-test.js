@@ -4,22 +4,21 @@ var sinon = require('sinon')
 var unit = require('../')
 
 describe('tiny-style-loader', function () {
-  var doc, el, insertBefore
+  var doc, el, appendChild
 
   beforeEach(function () {
+    appendChild = sinon.spy()
+
     global.document = doc = {
       createElement: sinon.stub(),
-      getElementsByTagName: sinon.stub()
+      head: {
+        appendChild: appendChild
+      }
     }
 
     el = { nodeName: 'LINK' }
 
     doc.createElement.withArgs('link').returns(el)
-
-    insertBefore = sinon.spy()
-    doc.getElementsByTagName.returns([{
-      parentNode: {insertBefore: insertBefore}
-    }])
   })
 
   afterEach(function () {
